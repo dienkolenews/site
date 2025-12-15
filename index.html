@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CROP FUTURE FOR SAFETY LIFE</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root{
+      --green:#22c55e;
+      --green-2:#16a34a;
+      --green-3:#10b981;
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      color:#0f172a;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.35)),
+        url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1920&auto=format&fit=crop'); /* rice field */
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+    /* Orchard overlay */
+    body::before{
+      content:"";
+      position: fixed; inset: 0; z-index:-1;
+      background-image: url('https://images.unsplash.com/photo-1471193945509-9ad0617afabf?q=80&w=1920&auto=format&fit=crop'); /* fruit orchard */
+      background-size: cover; background-position: center;
+      opacity: .35; filter: saturate(1.15);
+    }
+
+    /* Title animation: glowing green appear/disappear */
+    @keyframes glowPulse {
+      0%,100% { opacity:.85; text-shadow: 0 0 0 rgba(34,197,94,0); transform: scale(1); }
+      50% { opacity:1; text-shadow: 0 0 28px rgba(34,197,94,.95); transform: scale(1.02); }
+    }
+    .title-animated{ color: var(--green); animation: glowPulse 3s ease-in-out infinite; letter-spacing:.5px }
+
+    /* Frosted glass container */
+    .glass{ background: rgba(255,255,255,.78); backdrop-filter: blur(4px); border:1px solid rgba(255,255,255,.35); border-radius:16px; box-shadow: 0 12px 30px rgba(0,0,0,.25); }
+
+    /* Folder card */
+    .folder{ position:relative; background: rgba(255,255,255,.92); border-radius:14px; box-shadow: 0 10px 30px rgba(0,0,0,.2); transition: transform .25s ease, box-shadow .25s ease; }
+    .folder:hover{ transform: translateY(-4px); box-shadow: 0 16px 38px rgba(0,0,0,.28); }
+    .folder::before{ content:""; position:absolute; top:-10px; left:18px; width:82px; height:20px; border-radius: 6px 6px 0 0; background: linear-gradient(90deg,#e8fff2,#d1fae5); border:1px solid rgba(16,185,129,.35) }
+
+    .item{ background: linear-gradient(180deg, rgba(236,253,245,.9), rgba(255,255,255,.96)); border:1px solid rgba(16,185,129,.2); border-radius:10px; padding:10px 12px; transition: transform .2s ease, background .2s ease }
+    .item:hover{ transform: translateY(-2px); }
+
+    details > summary{ list-style:none; cursor:pointer; }
+    details > summary::-webkit-details-marker{ display:none }
+
+    /* Nice external links */
+    .ref a{ color:#0ea5e9; }
+    .ref a:hover{ text-decoration:underline }
+
+    /* Insects */
+    .insect{ position: fixed; top:0; left:-60px; z-index:5; pointer-events:none; opacity:.92; filter: drop-shadow(0 2px 2px rgba(0,0,0,.25)); }
+    @keyframes fly1{
+      0%{ transform: translate(-10vw, 12vh) rotate(0deg) scale(.95) }
+      25%{ transform: translate(25vw, 6vh) rotate(10deg) scale(1) }
+      50%{ transform: translate(50vw, 22vh) rotate(-10deg) scale(1.05) }
+      75%{ transform: translate(75vw, 0vh) rotate(6deg) scale(1) }
+      100%{ transform: translate(110vw, 12vh) rotate(0deg) scale(.98) }
+    }
+    @keyframes fly2{
+      0%{ transform: translate(-10vw, 62vh) rotate(0deg) scale(.95) }
+      20%{ transform: translate(15vw, 56vh) rotate(-8deg) }
+      40%{ transform: translate(35vw, 72vh) rotate(10deg) }
+      60%{ transform: translate(60vw, 52vh) rotate(-6deg) }
+      80%{ transform: translate(85vw, 68vh) rotate(8deg) }
+      100%{ transform: translate(110vw, 62vh) rotate(0deg) scale(.98) }
+    }
+    .wing{ transform-origin: center; animation: flap .25s ease-in-out infinite alternate; }
+    @keyframes flap{ from{ transform: rotateZ(6deg)} to{ transform: rotateZ(-8deg)} }
+
+    .badge{ background: linear-gradient(90deg, var(--green), var(--green-2)); color:white; border-radius:9999px; padding:4px 10px; font-weight:700; font-size:12px; box-shadow: 0 6px 16px rgba(16,185,129,.35); }
+  </style>
+</head>
+<body class="selection:bg-green-200 selection:text-green-900">
+  <header class="max-w-7xl mx-auto px-4 sm:px-6 pt-10 pb-6 text-center">
+    <h1 class="title-animated text-3xl sm:text-5xl font-extrabold tracking-wide drop-shadow-xl">CROP FUTURE FOR SAFETY LIFE</h1>
+    <p class="mt-2 text-white/90">Academic reference platform for Crop Science</p>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 pb-16">
+    <section class="glass p-4 sm:p-6">
+      <h2 class="mb-4"><span class="badge">Main categories</span></h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- GREEN FOODS -->
+        <div class="folder p-4">
+          <div class="flex items-center gap-3">
+            <!-- Icon: plate + fish/meat/shrimp -->
+            <svg width="46" height="46" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="32" cy="32" r="30" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+              <path d="M12 36c10-6 22-6 32 0-10 8-22 8-32 0Z" fill="#93c5fd" stroke="#2563eb"/>
+              <path d="M46 28c-3 6-3 10 0 16 6-4 10-7 10-8s-4-4-10-8Z" fill="#60a5fa" stroke="#2563eb"/>
+              <rect x="20" y="20" width="10" height="6" rx="3" fill="#ef4444"/>
+              <rect x="20" y="28" width="10" height="6" rx="3" fill="#f97316"/>
+            </svg>
+            <div>
+              <h3 class="text-lg font-extrabold text-green-700">GREEN FOODS</h3>
+              <p class="text-sm text-slate-600">WILD FISH, CLEAN MEAT, FRESHWATER SHRIMP</p>
+            </div>
+          </div>
+          <div class="mt-4 space-y-3">
+            <!-- Wild fish -->
+            <details class="item">
+              <summary class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <span class="shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold">🐟</span>
+                  <div>
+                    <div class="font-semibold">WILD FISH</div>
+                    <div class="text-xs text-slate-600">Nutrition, sustainability, and food safety</div>
+                  </div>
+                </div>
+                <span class="text-xs text-green-700 font-semibold">References (5)</span>
+              </summary>
+              <div class="mt-3 ref text-sm text-slate-700">
+                <ul class="list-disc pl-5 space-y-1">
+                  <li><a target="_blank" rel="noopener" href="https://doi.org/10.1001/jama.296.15.1885">JAMA: Fish intake, contaminants, and human health (Mozaffarian & Rimm, 2006)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.fao.org/fishery/en">FAO: Fisheries and Aquaculture Division</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.fao.org/publications/sofia/en/">FAO: The State of World Fisheries and Aquaculture (SOFIA)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.frontiersin.org/journals/marine-science/sections/fisheries-and-aquaculture">Frontiers in Marine Science: Fisheries & Aquaculture</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.fisheries.noaa.gov/sustainable-seafood">NOAA: Sustainable Seafood (product information)</a></li>
+                </ul>
+              </div>
+            </details>
+            <!-- Clean meat -->
+            <details class="item">
+              <summary class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <span class="shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold">🥩</span>
+                  <div>
+                    <div class="font-semibold">CLEAN MEAT</div>
+                    <div class="text-xs text-slate-600">Biosecurity, standards, and health</div>
+                  </div>
+                </div>
+                <span class="text-xs text-green-700 font-semibold">References (5)</span>
+              </summary>
+              <div class="mt-3 ref text-sm text-slate-700">
+                <ul class="list-disc pl-5 space-y-1">
+                  <li><a target="_blank" rel="noopener" href="https://www.who.int/health-topics/food-safety">WHO: Food Safety</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.fsis.usda.gov/">USDA FSIS: Food Safety and Inspection Service</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.efsa.europa.eu/en/topics/topic/biological-hazards">EFSA: Biological hazards in food (meat safety)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://doi.org/10.1073/pnas.1503141112">PNAS: Global trends in antimicrobial use in livestock (Van Boeckel et al., 2015)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://ec.europa.eu/info/food-farming-fisheries/farming/organic-farming_en">EU: Organic farming and meat product info (product information)</a></li>
+                </ul>
+              </div>
+            </details>
+            <!-- Freshwater shrimp -->
+            <details class="item">
+              <summary class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <span class="shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold">🦐</span>
+                  <div>
+                    <div class="font-semibold">FRESHWATER SHRIMP</div>
+                    <div class="text-xs text-slate-600">Sustainable aquaculture</div>
+                  </div>
+                </div>
+                <span class="text-xs text-green-700 font-semibold">References (5)</span>
+              </summary>
+              <div class="mt-3 ref text-sm text-slate-700">
+                <ul class="list-disc pl-5 space-y-1">
+                  <li><a target="_blank" rel="noopener" href="https://www.fao.org/aquaculture/en">FAO: Aquaculture</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://doi.org/10.1038/35016500">Nature: Effect of aquaculture on world fish supplies (Naylor et al., 2000)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.asc-aqua.org/what-you-can-do/our-standards/shrimp-standard/">ASC: Shrimp Standard (product information)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.worldfishcenter.org/">WorldFish: Research on sustainable aquaculture</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.fisheries.noaa.gov/topic/aquaculture">NOAA: Aquaculture</a></li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- GREEN FRUITS -->
+        <div class="folder p-4">
+          <div class="flex items-center gap-3">
+            <!-- Icon: apple/fruit -->
+            <svg width="46" height="46" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="32" cy="32" r="30" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+              <path d="M33 18c3-2 6-2 9 0-2 3-5 3-9 0Z" fill="#84cc16"/>
+              <path d="M24 44c-6-8-1-18 8-18s14 10 8 18c-5 6-19 6-24 0Z" fill="#f43f5e" stroke="#be123c"/>
+              <circle cx="35" cy="32" r="1.4" fill="#7f1d1d"/>
+            </svg>
+            <div>
+              <h3 class="text-lg font-extrabold text-green-700">GREEN FRUITS</h3>
+              <p class="text-sm text-slate-600">ORGANIC FRUITS, ECOLOGICAL FRUITS, ULTRA-CLEAN GARDEN SPECIALTIES</p>
+            </div>
+          </div>
+          <div class="mt-4 space-y-3">
+            <!-- Organic fruits -->
+            <details class="item">
+              <summary class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700">🍏</span>
+                  <div>
+                    <div class="font-semibold">ORGANIC FRUITS</div>
+                    <div class="text-xs text-slate-600">Nutritional quality and pesticide residues</div>
+                  </div>
+                </div>
+                <span class="text-xs text-green-700 font-semibold">References (5)</span>
+              </summary>
+              <div class="mt-3 ref text-sm">
+                <ul class="list-disc pl-5 space-y-1">
+                  <li><a target="_blank" rel="noopener" href="https://doi.org/10.1038/nature11069">Nature: Comparing yields of organic and conventional (Seufert et al., 2012)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://doi.org/10.1017/S0007114514001366">BJN: Antioxidants & pesticide residues in organic crops (Barański et al., 2014)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://doi.org/10.1038/nplants.2015.221">Nature Plants: Organic agriculture in the 21st century (Reganold & Wachter, 2016)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.ams.usda.gov/about-ams/programs-offices/national-organic-program">USDA: National Organic Program (product information)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://ec.europa.eu/info/food-farming-fisheries/farming/organic-farming_en">EU: Organic farming policy (product information)</a></li>
+                </ul>
+              </div>
+            </details>
+            <!-- Ecological fruits -->
+            <details class="item">
+              <summary class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700">🍓</span>
+                  <div>
+                    <div class="font-semibold">ECOLOGICAL FRUITS</div>
+                    <div class="text-xs text-slate-600">Agroecology & ecosystem services</div>
+                  </div>
+                </div>
+                <span class="text-xs text-green-700 font-semibold">References (5)</span>
+              </summary>
+              <div class="mt-3 ref text-sm">
+                <ul class="list-disc pl-5 space-y-1">
+                  <li><a target="_blank" rel="noopener" href="https://www.fao.org/agroecology/home/en/">FAO: Agroecology Knowledge Hub</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.frontiersin.org/journals/sustainable-food-systems/sections/agroecology-and-ecosystem-services">Frontiers: Agroecology & Ecosystem Services</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.ifoam.bio/">IFOAM: Organics International</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://doi.org/10.1007/s10457-009-9229-7">Agroforestry Systems: Ecosystem services of agroforestry (Jose, 2009)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://doi.org/10.1126/science.1230200">Science: Wild pollinators enhance fruit set (Garibaldi et al., 2013)</a></li>
+                </ul>
+              </div>
+            </details>
+            <!-- Ultra-clean garden specialties -->
+            <details class="item">
+              <summary class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700">🥝</span>
+                  <div>
+                    <div class="font-semibold">ULTRA-CLEAN GARDEN SPECIALTIES</div>
+                    <div class="text-xs text-slate-600">Safe supply chains & traceability</div>
+                  </div>
+                </div>
+                <span class="text-xs text-green-700 font-semibold">References (5)</span>
+              </summary>
+              <div class="mt-3 ref text-sm">
+                <ul class="list-disc pl-5 space-y-1">
+                  <li><a target="_blank" rel="noopener" href="https://www.globalgap.org/">GLOBALG.A.P.: Good Agricultural Practices</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.fao.org/fao-who-codexalimentarius/en/">Codex Alimentarius: International food standards</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.iso.org/iso-22000-food-safety-management.html">ISO 22000: Food safety management</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.efsa.europa.eu/en/topics/topic/pesticides">EFSA: Pesticides and MRLs (fruit quality)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://organic.ams.usda.gov/integrity/">USDA Organic Integrity Database (certification lookup)</a></li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- GREEN VEGETABLES -->
+        <div class="folder p-4">
+          <div class="flex items-center gap-3">
+            <!-- Icon: leaf -->
+            <svg width="46" height="46" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="32" cy="32" r="30" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+              <path d="M18 40c14-2 24-12 28-24-16 2-26 12-28 24Z" fill="#22c55e" stroke="#065f46"/>
+              <path d="M18 40c6-6 10-10 18-14" stroke="#065f46" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <h3 class="text-lg font-extrabold text-green-700">GREEN VEGETABLES</h3>
+              <p class="text-sm text-slate-600">ORGANIC VEGETABLES, HYDROPONIC VEGETABLES, WILD VEGETABLES</p>
+            </div>
+          </div>
+          <div class="mt-4 space-y-3">
+            <!-- Organic vegetables -->
+            <details class="item">
+              <summary class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700">🥬</span>
+                  <div>
+                    <div class="font-semibold">ORGANIC VEGETABLES</div>
+                    <div class="text-xs text-slate-600">Nutritional value, yield & environment</div>
+                  </div>
+                </div>
+                <span class="text-xs text-green-700 font-semibold">References (5)</span>
+              </summary>
+              <div class="mt-3 ref text-sm">
+                <ul class="list-disc pl-5 space-y-1">
+                  <li><a target="_blank" rel="noopener" href="https://doi.org/10.1017/S0007114514001366">BJN: Nutrients & residues in organic produce (Barański et al., 2014)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://doi.org/10.1038/nature11069">Nature: Comparing yields of organic and conventional (Seufert et al., 2012)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://doi.org/10.1098/rspb.2014.1396">Proc. R. Soc. B: Closing the yield gap via diversification (Ponisio et al., 2015)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.ams.usda.gov/about-ams/programs-offices/national-organic-program">USDA: National Organic Program</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.ifoam.bio/">IFOAM: International organic standards</a></li>
+                </ul>
+              </div>
+            </details>
+            <!-- Hydroponic vegetables -->
+            <details class="item">
+              <summary class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700">💧</span>
+                  <div>
+                    <div class="font-semibold">HYDROPONIC VEGETABLES</div>
+                    <div class="text-xs text-slate-600">Resource efficiency & quality</div>
+                  </div>
+                </div>
+                <span class="text-xs text-green-700 font-semibold">References (5)</span>
+              </summary>
+              <div class="mt-3 ref text-sm">
+                <ul class="list-disc pl-5 space-y-1">
+                  <li><a target="_blank" rel="noopener" href="https://doi.org/10.17660/ActaHortic.1999.481.119">Acta Horticulturae: Hydroponics worldwide (Jensen, 1999)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://doi.org/10.3390/environments2040368">Environments: Resources for hydroponic lettuce (Barbosa et al., 2015)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.fao.org/3/i4021e/i4021e.pdf">FAO: Small-scale aquaponics food production (technical guide)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.frontiersin.org/journals/plant-science">Frontiers in Plant Science (related research)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.ams.usda.gov/sites/default/files/media/HydroponicsOrganicReport.pdf">USDA: Report on Hydroponics & Organic (policy information)</a></li>
+                </ul>
+              </div>
+            </details>
+            <!-- Wild vegetables -->
+            <details class="item">
+              <summary class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700">🌿</span>
+                  <div>
+                    <div class="font-semibold">WILD VEGETABLES</div>
+                    <div class="text-xs text-slate-600">Wild edible plants & nutrition</div>
+                  </div>
+                </div>
+                <span class="text-xs text-green-700 font-semibold">References (5)</span>
+              </summary>
+              <div class="mt-3 ref text-sm">
+                <ul class="list-disc pl-5 space-y-1">
+                  <li><a target="_blank" rel="noopener" href="https://doi.org/10.1186/1746-4269-9-76">Journal of Ethnobiology and Ethnomedicine: Wild edible plants review (2013)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.fao.org/forestry/nwfp/en/">FAO: Non-wood forest products (edible plants)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.iucn.org/">IUCN: Conservation resources</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.frontiersin.org/journals/nutrition">Frontiers in Nutrition (wild foods & nutrition)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.who.int/publications">WHO: Publications on nutrition & food safety</a></li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- GREEN FIELDS -->
+        <div class="folder p-4">
+          <div class="flex items-center gap-3">
+            <!-- Icon: wheat/cereal -->
+            <svg width="46" height="46" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="32" cy="32" r="30" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+              <path d="M26 44c0-10 4-22 12-28-2 10-2 20 0 28-4 4-8 4-12 0Z" fill="#f59e0b" stroke="#b45309"/>
+              <path d="M20 40c8-2 14-6 20-12" stroke="#b45309" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <h3 class="text-lg font-extrabold text-green-700">GREEN FIELDS</h3>
+              <p class="text-sm text-slate-600">ORGANIC RICE, ORGANIC CORN, ORGANIC WHEAT</p>
+            </div>
+          </div>
+          <div class="mt-4 space-y-3">
+            <!-- Organic rice -->
+            <details class="item">
+              <summary class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700">🍚</span>
+                  <div>
+                    <div class="font-semibold">ORGANIC RICE</div>
+                    <div class="text-xs text-slate-600">Farming systems & yield</div>
+                  </div>
+                </div>
+                <span class="text-xs text-green-700 font-semibold">References (5)</span>
+              </summary>
+              <div class="mt-3 ref text-sm">
+                <ul class="list-disc pl-5 space-y-1">
+                  <li><a target="_blank" rel="noopener" href="https://sri.ciifad.cornell.edu/">Cornell: System of Rice Intensification (SRI)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.irri.org/">IRRI: International Rice Research Institute</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://doi.org/10.1038/nature11069">Nature: Comparing yields of organic and conventional (Seufert et al., 2012)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://attra.ncat.org/products/organic-rice-production/">ATTRA: Organic Rice Production (product information)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://ec.europa.eu/info/food-farming-fisheries/farming/organic-farming_en">EU: Organic farming (policy & markets)</a></li>
+                </ul>
+              </div>
+            </details>
+            <!-- Organic corn -->
+            <details class="item">
+              <summary class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700">🌽</span>
+                  <div>
+                    <div class="font-semibold">ORGANIC CORN</div>
+                    <div class="text-xs text-slate-600">Organic grains & systems management</div>
+                  </div>
+                </div>
+                <span class="text-xs text-green-700 font-semibold">References (5)</span>
+              </summary>
+              <div class="mt-3 ref text-sm">
+                <ul class="list-disc pl-5 space-y-1">
+                  <li><a target="_blank" rel="noopener" href="https://doi.org/10.1098/rspb.2014.1396">Proc. R. Soc. B: Diversification narrows the yield gap (Ponisio et al., 2015)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.sare.org/resources/organic-corn-production/">USDA SARE: Organic Corn Production (guide)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://eorganic.org/">eOrganic: Research & Extension for Organic Agriculture</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.ifoam.bio/">IFOAM: Systems & standards for organic cereals</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://www.frontiersin.org/journals/sustainable-food-systems">Frontiers: Sustainable Food Systems</a></li>
+                </ul>
+              </div>
+            </details>
+            <!-- Organic wheat -->
+            <details class="item">
+              <summary class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700">🌾</span>
+                  <div>
+                    <div class="font-semibold">ORGANIC WHEAT</div>
+                    <div class="text-xs text-slate-600">Quality, yield & standards</div>
+                  </div>
+                </div>
+                <span class="text-xs text-green-700 font-semibold">References (5)</span>
+              </summary>
+              <div class="mt-3 ref text-sm">
+                <ul class="list-disc pl-5 space-y-1">
+                  <li><a target="_blank" rel="noopener" href="https://www.fao.org/wheat">FAO: Wheat (global information)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://doi.org/10.1038/nplants.2015.221">Nature Plants: Overview of organic agriculture (Reganold & Wachter, 2016)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://doi.org/10.1038/nature11069">Nature: Comparing yields of organic and conventional (Seufert et al., 2012)</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://eorganic.org/">eOrganic: Small grains (wheat) resources</a></li>
+                  <li><a target="_blank" rel="noopener" href="https://ec.europa.eu/info/food-farming-fisheries/farming/organic-farming_en">EU: Organic (standards & markets)</a></li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slogan -->
+      <div class="mt-10 text-center">
+        <div class="inline-block rounded-xl px-4 py-3 bg-white/70 backdrop-blur border border-white/50 shadow-lg">
+          <p class="text-xl sm:text-2xl font-extrabold tracking-wide text-green-700">GREEN AGRICULTURE FOR LIFE</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Source note -->
+    <p class="mt-6 text-sm text-white/80 text-center">Note: Links open resource pages and international articles for reference; standards/labels are sources of product information.</p>
+  </main>
+
+  <!-- Insects SVG templates (hidden) -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <!-- Bee -->
+      <g id="icon-bee">
+        <ellipse cx="18" cy="14" rx="18" ry="12" fill="#fbbf24" stroke="#92400e"/>
+        <rect x="6" y="8" width="24" height="4" fill="#1f2937"/>
+        <rect x="6" y="16" width="24" height="4" fill="#1f2937"/>
+        <ellipse class="wing" cx="10" cy="6" rx="8" ry="6" fill="#dbeafe" stroke="#60a5fa"/>
+        <ellipse class="wing" cx="26" cy="6" rx="8" ry="6" fill="#dbeafe" stroke="#60a5fa" style="animation-delay:.12s"/>
+        <circle cx="4" cy="14" r="4" fill="#111827"/>
+      </g>
+      <!-- Dragonfly -->
+      <g id="icon-dragonfly">
+        <rect x="14" y="6" width="8" height="20" rx="4" fill="#10b981"/>
+        <rect x="18" y="10" width="16" height="5" rx="3" fill="#a7f3d0" class="wing"/>
+        <rect x="2" y="10" width="16" height="5" rx="3" fill="#a7f3d0" class="wing" style="animation-delay:.1s"/>
+        <rect x="18" y="17" width="16" height="5" rx="3" fill="#a7f3d0" class="wing" style="animation-delay:.2s"/>
+        <rect x="2" y="17" width="16" height="5" rx="3" fill="#a7f3d0" class="wing" style="animation-delay:.3s"/>
+        <circle cx="18" cy="6" r="4" fill="#064e3b"/>
+      </g>
+      <!-- Ladybug -->
+      <g id="icon-ladybug">
+        <circle cx="14" cy="14" r="10" fill="#ef4444" stroke="#7f1d1d"/>
+        <rect x="14" y="10" width="1.5" height="8" fill="#111827"/>
+        <circle cx="11" cy="12" r="1.2" fill="#111827"/>
+        <circle cx="16.5" cy="12" r="1.2" fill="#111827"/>
+        <circle cx="12" cy="16" r="1.2" fill="#111827"/>
+        <circle cx="17.5" cy="16" r="1.2" fill="#111827"/>
+        <circle cx="14" cy="5" r="3" fill="#111827"/>
+      </g>
+      <!-- Butterfly -->
+      <g id="icon-butterfly">
+        <ellipse class="wing" cx="10" cy="14" rx="8" ry="10" fill="#a78bfa"/>
+        <ellipse class="wing" cx="22" cy="14" rx="8" ry="10" fill="#60a5fa" style="animation-delay:.12s"/>
+        <rect x="15" y="8" width="2.5" height="14" fill="#111827"/>
+        <circle cx="16" cy="7" r="2" fill="#111827"/>
+      </g>
+    </defs>
+  </svg>
+
+  <script>
+    // Generate multiple insects animating across the screen
+    function createInsect(type, size, path, duration, delay, topOffset){
+      const svgNS = 'http://www.w3.org/2000/svg';
+      const wrap = document.createElement('div');
+      wrap.className = 'insect';
+      wrap.style.top = topOffset + 'vh';
+      wrap.style.animation = path + ' ' + duration + 's linear infinite';
+      wrap.style.animationDelay = delay + 's';
+
+      const svg = document.createElementNS(svgNS, 'svg');
+      svg.setAttribute('width', size);
+      svg.setAttribute('height', size);
+      svg.setAttribute('viewBox', '0 0 32 28');
+      const use = document.createElementNS(svgNS, 'use');
+      use.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#icon-' + type);
+      svg.appendChild(use);
+      wrap.appendChild(svg);
+      document.body.appendChild(wrap);
+    }
+
+    function random(min, max){ return Math.random() * (max - min) + min; }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const species = [
+        {t:'dragonfly', n: 3, size:[38,54]},
+        {t:'bee',       n: 4, size:[28,38]},
+        {t:'ladybug',   n: 3, size:[22,28]},
+        {t:'butterfly', n: 3, size:[34,46]}
+      ];
+      species.forEach(sp => {
+        for(let i=0;i<sp.n;i++){
+          const sz = Math.round(random(sp.size[0], sp.size[1]));
+          const path = Math.random() > 0.5 ? 'fly1' : 'fly2';
+          const duration = random(18, 32);
+          const delay = random(0, 12);
+          const top = path === 'fly1' ? random(6, 24) : random(48, 78);
+          createInsect(sp.t, sz, path, duration, delay, top);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
